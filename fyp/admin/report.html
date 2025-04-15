@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generate Report - Orcakes Patisserie</title>
+  <style>
+    /* Global Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      overflow-x: hidden; /* Prevent horizontal scroll */
+    }
+
+    .logo-img {
+      max-width: 80px; /* Set a maximum width for the logo */
+      height: auto; /* Maintain aspect ratio */
+    }
+
+
+    /* Header */
+    .header {
+      background-color: #fdeef4;
+      color: black;
+      padding: 9px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .header .toggle-btn {
+      font-size: 24px;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      z-index: 1200;
+    }
+
+    .header h1 {
+      font-size: 24px;
+      margin: 0;
+      font-weight: bold;
+    }
+
+    .user-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 50px;
+  position: relative;
+  cursor: pointer;
+}
+
+.user-icon {
+  cursor: pointer;
+}
+
+/* Dropdown content */
+.dropdown-content {
+        display: none; /* Hidden initially */
+        position: absolute;
+        top: 100%; /* Position below the icon */
+        right: 0; /* Align to the right edge */
+        background-color: white;
+        min-width: 150px; /* Dropdown width */
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Adds shadow */
+        z-index: 1000; /* Ensure it's on top */
+        border-radius: 5px;
+        overflow: hidden;
+        transition: opacity 0.3s ease; /* Smooth transition for visibility */
+        opacity: 0; /* Initially invisible */
+        visibility: hidden; /* Prevent interaction */
+      }
+      
+      .dropdown-content a {
+        color: black;
+        text-decoration: none;
+        padding: 10px 15px;
+        display: block;
+        font-size: 14px;
+        background-color: transparent; /* Default background color */
+      }
+      
+      /* User dropdown styling */
+    .dropdown-content a:hover {
+      background-color: #fca5ea;
+      color: white; /* Good contrast for text */
+      text-decoration: none; /* Keep underline removed */
+      padding: 10px 15px; /* Padding to fully fulfill the box */
+      display: block;
+      width: 100%; /* Make sure it fills the entire box width */
+    }
+  
+      /* Show dropdown on hover */
+      .user-section:hover .dropdown-content {
+        display: block; /* Make dropdown visible */
+        opacity: 1; /* Fully visible */
+        visibility: visible; /* Allow interaction */
+      }
+
+
+    /* Sidebar */
+    .sidebar {
+      background-color: #fdeef4; /* Light cream color */
+      width: 250px;
+      height: 100vh;
+      position: fixed;
+      left: 0;
+      top: 0;
+      transform: translateX(0);
+      transition: transform 0.3s ease;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      padding-top: 80px;
+    }
+
+    .sidebar.hidden {
+      transform: translateX(-250px);
+    }
+
+    .sidebar ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .sidebar ul li {
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .sidebar ul li:hover {
+      background-color: #ff95c0; /* Highlight color */
+    }
+
+    .sidebar ul li a {
+      text-decoration: none;
+      color: black;
+      font-size: 16px;
+      margin-left: 10px;
+    }
+
+    .content {
+      padding: 90px;
+      max-width: 900px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      color: #9a1b74;
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .form-group select, .form-group input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .form-actions {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .form-actions button {
+      background-color: #994b82;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .form-actions button:hover {
+      background-color: #9a1b74;
+    }
+
+    .report-output {
+      margin-top: 30px;
+      padding: 20px;
+      background-color: #ede7f6;
+      border-radius: 10px;
+      display: none;
+    }
+
+    .report-output h2 {
+      margin: 0 0 10px;
+      color: #9a1b74;
+    }
+
+    .report-output p {
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <ul>
+      <li><a href="classreg.html"><span>&#128338;</span> Schedule Lessons</a></li>
+      <li><a href="order.html"><span>&#128722;</span> Manage Orders</a></li>
+      <li><a href="#"><span>&#128203;</span> Stock Items</a></li>
+      <li><a href="#"><span>&#128200;</span> Analytics</a></li>
+      <li><a href="report.html"><span>&#128221;</span> Reports</a></li>
+      <li><a href="#"><span>&#9881;</span> Settings</a></li>
+    </ul>
+  </div>
+
+  <!-- Header -->
+  <div class="header">
+    <button class="toggle-btn" id="toggleBtn">&#9776;</button>
+    <a href="dashboard.html" class="logo">
+      <img src="orcakes.png" alt="Company Logo" class="logo-img">
+    </a>
+    <div class="user-section">
+      <img src="user.png" alt="User Icon" class="user-icon" width="31" height="30">
+      <div class="dropdown-content">
+        <a href="login.html" class="logout-link">Log Out</a>
+      </div>
+    </div>    
+  </div>
+
+  <!-- Main Content -->
+  <div class="content">
+    <h1>Generate Report</h1>
+    <form id="reportForm">
+      <!-- Report Type Selection -->
+      <div class="form-group">
+        <label for="reportType">Select Report Type:</label>
+        <select id="reportType" required>
+          <option value="">-- Select --</option>
+          <option value="userActivity">User Activity</option>
+          <option value="sales">Sales</option>
+          <option value="inventory">Inventory</option>
+        </select>
+      </div>
+
+      <!-- Filters -->
+      <div class="form-group">
+        <label for="dateFrom">Date From:</label>
+        <input type="date" id="dateFrom" required>
+      </div>
+      <div class="form-group">
+        <label for="dateTo">Date To:</label>
+        <input type="date" id="dateTo" required>
+      </div>
+
+      <!-- Actions -->
+      <div class="form-actions">
+        <button type="button" onclick="generateReport()">Generate Report</button>
+      </div>
+    </form>
+
+    <!-- Report Output Section -->
+    <div class="report-output" id="reportOutput">
+      <h2>Generated Report</h2>
+      <p><strong>Type:</strong> <span id="reportTypeOutput"></span></p>
+      <p><strong>Date Range:</strong> <span id="dateRangeOutput"></span></p>
+      <p><strong>Summary:</strong> <span id="reportSummary"></span></p>
+      <button onclick="downloadReport()">Download Report</button>
+    </div>
+  </div>
+
+  <script>
+
+    // JavaScript for Sliding Sidebar
+    const toggleBtn = document.getElementById('toggleBtn');
+    const sidebar = document.getElementById('sidebar');
+
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('hidden');
+    });
+
+    // JavaScript for Logout Functionality
+    document.querySelector('.logout-link').addEventListener('click', function (e) {
+      e.preventDefault(); // Prevent default link behavior
+      window.location.href = 'login.html'; // Redirect to login page
+    });
+
+    // Mock function to simulate report generation
+    function generateReport() {
+      const reportType = document.getElementById('reportType').value;
+      const dateFrom = document.getElementById('dateFrom').value;
+      const dateTo = document.getElementById('dateTo').value;
+      const reportOutput = document.getElementById('reportOutput');
+      const reportTypeOutput = document.getElementById('reportTypeOutput');
+      const dateRangeOutput = document.getElementById('dateRangeOutput');
+      const reportSummary = document.getElementById('reportSummary');
+
+      if (reportType && dateFrom && dateTo) {
+        // Show the report output
+        reportTypeOutput.textContent = reportType.charAt(0).toUpperCase() + reportType.slice(1);
+        dateRangeOutput.textContent = `${dateFrom} to ${dateTo}`;
+        reportSummary.textContent = `This is a summary of the ${reportType} report generated for the selected date range.`;
+
+        reportOutput.style.display = 'block';
+      } else {
+        alert('Please fill out all fields to generate the report.');
+      }
+    }
+
+    // Mock function to simulate downloading a report
+    function downloadReport() {
+      alert('Report downloaded successfully.');
+    }
+  </script>
+</body>
+</html>

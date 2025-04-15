@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <style>
+    /* Inline styles for the login page */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('bg1.jpg') center/cover no-repeat;
+    }
+
+    .container {
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+      background: rgba(255, 255, 255, 0.85);
+      padding: 30px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .container h2 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: #333;
+    }
+
+    .login-form {
+      margin: 0;
+    }
+
+    .input-field {
+      width: 100%;
+      max-width: 360px;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 10px;
+      max-width: 360px;
+      border: none;
+      border-radius: 5px;
+      margin: 10px 0;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #c71585;
+      color: #fff;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .submit-btn:hover {
+      background-color: #f280c8;
+    }
+
+    .container p {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #666;
+    }
+
+    .container a {
+      color: #c71585;
+      text-decoration: none;
+    }
+
+    .container a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Login to Orcakes Patisserie</h2>
+    <form class="login-form" action="login.php" method="post">
+      <input type="text" name="username" placeholder="Username" class="input-field" required><br>
+      <input type="password" name="password" placeholder="Password" class="input-field" required><br>
+      <button type="submit" class="submit-btn">Login</button><br>
+    </form>
+    <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Shopping Cart</h1>
+
+    <!-- Cart Items -->
+    <h2>Your Cart</h2>
+    <form action="cart.php" method="POST">
+        <?php
+        session_start();
+        $cart = $_SESSION['cart'] ?? [];
+        $total = 0;
+
+        if (empty($cart)): ?>
+            <p>Your cart is empty.</p>
+        <?php else: ?>
+            <?php foreach ($cart as $index => $item): ?>
+                <div class="cart-item">
+                    <p><strong><?= htmlspecialchars($item['product_name']) ?></strong></p>
+                    <p>Price: RM<?= number_format($item['price'], 2) ?></p>
+                    <label for="quantity-<?= $index ?>">Quantity:</label>
+                    <input type="number" name="quantities[<?= $index ?>]" value="<?= $item['quantity'] ?>" min="1">
+                    <button type="submit" name="remove" value="<?= $index ?>">Remove</button>
+                </div>
+                <?php $total += $item['price'] * $item['quantity']; ?>
+            <?php endforeach; ?>
+            <p>Total: RM<?= number_format($total, 2) ?></p>
+            <button type="submit" name="update">Update Cart</button>
+        <?php endif; ?>
+    </form>
+
+    <h2>Add Products</h2>
+    <div class="products">
+        <?php
+        // Database connection
+        $conn = new mysqli("localhost", "root", "", "orcakes_patisserie");
+        $result = $conn->query("SELECT id, product_name, price FROM products");
+
+        while ($row = $result->fetch_assoc()): ?>
+            <div class="product">
+                <p><strong><?= htmlspecialchars($row['product_name']) ?></strong></p>
+                <p>Price: RM<?= number_format($row['price'], 2) ?></p>
+                <form action="cart.php" method="POST">
+                    <input type="hidden" name="product_id" value="<?= $row['id'] ?>">
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" name="quantity" value="1" min="1">
+                    <button type="submit" name="action" value="add">Add to Cart</button>
+                </form>
+            </div>
+        <?php endwhile; ?>
+    </div>
+</body>
+</html>

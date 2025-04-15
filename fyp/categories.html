@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Categories</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Navigation bar styling */
+  nav {
+    display: flex;
+    justify-content: center; /* Space between logo and navigation items */
+    align-items: center; /* Vertically align items */
+    padding: 0 20px; /* Add padding for spacing */
+    position: relative; /* Ensure relative positioning for absolute child elements */
+  }
+  
+  /* Center navigation links */
+  nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0 auto; /* Center the links */
+    padding: 0;
+    justify-content: center;
+  }
+  
+  nav ul li {
+    margin: 0 15px;
+  }
+  
+  nav ul li a {
+    color: #333;
+    text-decoration: none;
+    font-size: 1.2em;
+  }
+  
+  nav ul li a:hover {
+    color: #c71585;
+  }
+  
+  /* Align search input and user icon to the right */
+  nav input[type="text"] {
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f5e3fc;
+    color: #333;
+    margin-right: 20px; /* Space between search and user icon */
+    width: 200px; /* Set a fixed width for the search input */
+  }
+  
+  /* Cart button styling */
+  .cart-button {
+    margin-right: 15px;
+    display: flex;
+    align-items: center; /* Vertically align the icon */
+  }
+  
+  .cart-icon {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+  }
+  
+  .cart-button:hover .cart-icon {
+    transform: scale(1.1); /* Slight zoom effect on hover */
+    transition: transform 0.3s ease;
+  }
+  
+    /* User dropdown styling */
+      .user-dropdown {
+        position: relative;
+        display: inline-block;
+      }
+      
+      .user-icon {
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        border-radius: 50%; /* Circular icon */
+        display: block;
+      }
+      
+      /* Dropdown content */
+      .dropdown-content {
+        display: none; /* Hidden initially */
+        position: absolute;
+        top: 100%; /* Position below the icon */
+        right: 0; /* Align to the right edge */
+        background-color: white;
+        min-width: 150px; /* Dropdown width */
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Adds shadow */
+        z-index: 1000; /* Ensure it's on top */
+        border-radius: 5px;
+        overflow: hidden;
+        transition: opacity 0.3s ease; /* Smooth transition for visibility */
+        opacity: 0; /* Initially invisible */
+        visibility: hidden; /* Prevent interaction */
+      }
+      
+      .dropdown-content a {
+        color: black;
+        text-decoration: none;
+        padding: 10px 15px;
+        display: block;
+        font-size: 14px;
+        background-color: transparent; /* Default background color */
+      }
+      
+      /* User dropdown styling */
+    .dropdown-content a:hover {
+      background-color: #fca5ea;
+      color: white; /* Good contrast for text */
+      text-decoration: none; /* Keep underline removed */
+      padding: 10px 15px; /* Padding to fully fulfill the box */
+      display: block;
+      width: 100%; /* Make sure it fills the entire box width */
+    }
+  
+      /* Show dropdown on hover */
+      .user-dropdown:hover .dropdown-content {
+        display: block; /* Make dropdown visible */
+        opacity: 1; /* Fully visible */
+        visibility: visible; /* Allow interaction */
+      }
+      </style>
+  
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="homepage.html" class="logo">
+          <img src="orcakes.png" alt="Company Logo" class="logo-img">
+        </a>
+        <ul>
+          <li><a href="homepage.html">Home</a></li>
+          <li><a href="categories.html">Product Catalog</a></li>
+          <li><a href="class-register.html">Class Registration</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+  
+        </ul>
+        
+        <input type="text" placeholder="Search in site">
+        <!-- Add Cart Button -->
+        <a href="cart.html" class="cart-button">
+          <img src="cart.png" alt="Cart" class="cart-icon" width="30" height="30">
+        </a>
+        <div class="user-dropdown">
+          <img src="user.png" alt="User Icon" class="user-icon" width="31" height="30">
+          <div class="dropdown-content">
+            <a href="login.html">Log Out</a>
+          </div>
+      </nav>
+    </header>
+
+  <main>
+    <section class="categories">
+      <h2>PRODUCT CATEGORIES</h2>
+      <div class="category-grid">
+        <div class="category">
+          <a href="cakes-details.html">
+            <div class="image-wrapper">
+              <img src="cakes.jpg" alt="CAKES">
+            </div>
+            <p>CAKES</p>
+          </a>
+        </div>
+        <div class="category">
+          <a href="brownies-details.html">
+            <div class="image-wrapper">
+              <img src="brownies.jpg" alt="BROWNIES">
+            </div>
+            <p>BROWNIES</p>
+          </a>
+        </div>
+        <div class="category">
+          <a href="pavlova-details.html">
+            <div class="image-wrapper">
+              <img src="pavlova.jpg" alt="PAVLOVA">
+            </div>
+            <p>PAVLOVA</p>
+          </a>
+        </div>
+        <div class="category">
+          <a href="burnt-cheesecake-details.html">
+            <div class="image-wrapper">
+              <img src="burnt-cheesecake.jpg" alt="BURNT CHEESECAKE">
+            </div>
+            <p>BURNT CHEESECAKE</p>
+          </a>
+        </div>
+        <div class="category">
+          <a href="tartlets-details.html">
+            <div class="image-wrapper">
+              <img src="tartlets.jpg" alt="TARTLETS">
+            </div>
+            <p>TARTLETS</p>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <p>Follow us on Instagram @OrcakesPatisserie | &copy; 2022 Orcakes Pattisserie | info@orcakespatisserie.com | +601121065718</p>
+    </div>
+  </footer>
+
+  <script>
+    // Select the dropdown elements
+    const userDropdown = document.querySelector('.user-dropdown');
+    const dropdownContent = document.querySelector('.dropdown-content');
+  
+    // Show the dropdown when mouse enters
+    userDropdown.addEventListener('mouseenter', () => {
+      dropdownContent.style.display = 'block';
+    });
+  
+    // Hide the dropdown when mouse leaves
+    userDropdown.addEventListener('mouseleave', () => {
+      dropdownContent.style.display = 'none';
+    });
+  
+    // Optional: Add a smooth transition effect using CSS
+    dropdownContent.style.transition = 'opacity 0.3s ease';
+  </script>
+</body>
+</html>

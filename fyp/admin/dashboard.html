@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <style>
+    /* Global Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      overflow-x: hidden; /* Prevent horizontal scroll */
+    }
+
+    .logo-img {
+      max-width: 80px; /* Set a maximum width for the logo */
+      height: auto; /* Maintain aspect ratio */
+    }
+
+
+    /* Header */
+    .header {
+      background-color: #fdeef4;
+      color: black;
+      padding: 9px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .header .toggle-btn {
+      font-size: 24px;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      z-index: 1200;
+    }
+
+    .header h1 {
+      font-size: 24px;
+      margin: 0;
+      font-weight: bold;
+    }
+
+    .user-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 50px;
+  position: relative;
+  cursor: pointer;
+}
+
+.user-icon {
+  cursor: pointer;
+}
+
+/* Dropdown content */
+.dropdown-content {
+        display: none; /* Hidden initially */
+        position: absolute;
+        top: 100%; /* Position below the icon */
+        right: 0; /* Align to the right edge */
+        background-color: white;
+        min-width: 150px; /* Dropdown width */
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Adds shadow */
+        z-index: 1000; /* Ensure it's on top */
+        border-radius: 5px;
+        overflow: hidden;
+        transition: opacity 0.3s ease; /* Smooth transition for visibility */
+        opacity: 0; /* Initially invisible */
+        visibility: hidden; /* Prevent interaction */
+      }
+      
+      .dropdown-content a {
+        color: black;
+        text-decoration: none;
+        padding: 10px 15px;
+        display: block;
+        font-size: 14px;
+        background-color: transparent; /* Default background color */
+      }
+      
+      /* User dropdown styling */
+    .dropdown-content a:hover {
+      background-color: #fca5ea;
+      color: white; /* Good contrast for text */
+      text-decoration: none; /* Keep underline removed */
+      padding: 10px 15px; /* Padding to fully fulfill the box */
+      display: block;
+      width: 100%; /* Make sure it fills the entire box width */
+    }
+  
+      /* Show dropdown on hover */
+      .user-section:hover .dropdown-content {
+        display: block; /* Make dropdown visible */
+        opacity: 1; /* Fully visible */
+        visibility: visible; /* Allow interaction */
+      }
+
+    /* Sidebar */
+    .sidebar {
+      background-color: #fdeef4; /* Light cream color */
+      width: 250px;
+      height: 100vh;
+      position: fixed;
+      left: 0;
+      top: 0;
+      transform: translateX(0);
+      transition: transform 0.3s ease;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      padding-top: 80px;
+    }
+
+    .sidebar.hidden {
+      transform: translateX(-250px);
+    }
+
+    .sidebar ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .sidebar ul li {
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .sidebar ul li:hover {
+      background-color: #ff95c0; /* Highlight color */
+    }
+
+    .sidebar ul li a {
+      text-decoration: none;
+      color: black;
+      font-size: 16px;
+      margin-left: 10px;
+    }
+
+    /* Main Content */
+    .main-content {
+      margin-left: 250px;
+      margin-top: 80px; /* Header height */
+      padding: 20px;
+      flex-grow: 1;
+      background-color: #ffffff;
+      transition: margin-left 0.3s ease;
+      width: 100%;
+    }
+
+    .sidebar.hidden ~ .main-content {
+      margin-left: 0;
+    }
+
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background-color: #fd8ec0;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <ul>
+      <li><a href="classreg.html"><span>&#128338;</span> Schedule Lessons</a></li>
+      <li><a href="order.html"><span>&#128722;</span> Manage Orders</a></li>
+      <li><a href="#"><span>&#128203;</span> Stock Items</a></li>
+      <li><a href="#"><span>&#128200;</span> Analytics</a></li>
+      <li><a href="report.html"><span>&#128221;</span> Reports</a></li>
+      <li><a href="#"><span>&#9881;</span> Settings</a></li>
+    </ul>
+  </div>
+
+  <!-- Header -->
+  <div class="header">
+    <button class="toggle-btn" id="toggleBtn">&#9776;</button>
+    <a href="dashboard.html" class="logo">
+      <img src="orcakes.png" alt="Company Logo" class="logo-img">
+    </a>
+    <div class="user-section">
+      <img src="user.png" alt="User Icon" class="user-icon" width="31" height="30">
+      <div class="dropdown-content">
+        <a href="login.html" class="logout-link">Log Out</a>
+      </div>
+    </div>    
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <h2>Dashboard Overview</h2>
+    <div>
+      <p>Welcome to the admin dashboard. Use the navigation bar to explore features.</p>
+      <div class="card-container">
+        <div class="card">
+          <h3>Total Users</h3>
+          <p>Loading...</p>
+        </div>
+        <div class="card">
+          <h3>Active Orders</h3>
+          <p>Loading...</p>
+        </div>
+        <div class="card">
+          <h3>Stock Levels</h3>
+          <p>Loading...</p>
+        </div>
+        <div class="card">
+          <h3>Classes</h3>
+          <p>Loading...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript for Sliding Sidebar
+    const toggleBtn = document.getElementById('toggleBtn');
+    const sidebar = document.getElementById('sidebar');
+
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('hidden');
+    });
+
+    // JavaScript for Logout Functionality
+    document.querySelector('.logout-link').addEventListener('click', function (e) {
+      e.preventDefault(); // Prevent default link behavior
+      window.location.href = 'login.html'; // Redirect to login page
+    });
+  </script>
+</body>
+</html>

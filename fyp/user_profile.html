@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fddde6;
+            margin: 0;
+            padding: 0;
+        }
+        .profile-container {
+            width: 50%;
+            margin: 50px auto;
+            background: #ffc1d6;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        .profile-header {
+            text-align: center;
+        }
+        .profile-header img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+        .profile-header h1 {
+            font-size: 1.5em;
+            color: #333;
+        }
+        .profile-form label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+            color: #333;
+        }
+        .profile-form input, .profile-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .profile-form button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #ff6581;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .profile-form button:hover {
+            background-color: #e0546b;
+        }
+        .message {
+            color: red;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <div class="profile-header">
+            <img src="<?= htmlspecialchars($profile_pic ?? 'default.png') ?>" alt="Profile Picture">
+            <h1><?= htmlspecialchars($user ?? 'User') ?></h1>
+        </div>
+        <?php if (!empty($message)) : ?>
+            <div class="message"><?= htmlspecialchars($message) ?></div>
+        <?php endif; ?>
+        <form class="profile-form" action="profile.php" method="POST" enctype="multipart/form-data">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" value="<?= htmlspecialchars($email ?? '') ?>" required>
+
+            <label for="fullName">Full Name</label>
+            <input type="text" id="fullName" name="fullName" value="<?= htmlspecialchars($full_name ?? '') ?>" required>
+
+            <label for="phone">Phone No</label>
+            <input type="tel" id="phone" name="phone" value="<?= htmlspecialchars($phone ?? '') ?>" required>
+
+            <label for="address">Address</label>
+            <textarea id="address" name="address" rows="3" required><?= htmlspecialchars($address ?? '') ?></textarea>
+
+            <label for="profile_pic">Profile Picture</label>
+            <input type="file" id="profile_pic" name="profile_pic">
+
+            <button type="submit">Update</button>
+        </form>
+    </div>
+</body>
+</html>

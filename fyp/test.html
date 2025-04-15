@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home - Orcakes Patisserie</title>
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+  /* Navigation bar styling */
+nav {
+  display: flex;
+  justify-content: center; /* Space between logo and navigation items */
+  align-items: center; /* Vertically align items */
+  padding: 0 20px; /* Add padding for spacing */
+  position: relative; /* Ensure relative positioning for absolute child elements */
+}
+
+/* Center navigation links */
+nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0 auto; /* Center the links */
+  padding: 0;
+  justify-content: center;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: #333;
+  text-decoration: none;
+  font-size: 1.2em;
+}
+
+nav ul li a:hover {
+  color: #c71585;
+}
+
+/* Align search input and user icon to the right */
+nav input[type="text"] {
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f5e3fc;
+  color: #333;
+  margin-right: 10px; /* Space between search and user icon */
+  width: 200px; /* Set a fixed width for the search input */
+}
+
+  /* User dropdown styling */
+    .user-dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .user-icon {
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+      border-radius: 50%; /* Circular icon */
+      display: block;
+    }
+    
+    /* Dropdown content */
+    .dropdown-content {
+      display: none; /* Hidden initially */
+      position: absolute;
+      top: 100%; /* Position below the icon */
+      right: 0; /* Align to the right edge */
+      background-color: white;
+      min-width: 150px; /* Dropdown width */
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Adds shadow */
+      z-index: 1000; /* Ensure it's on top */
+      border-radius: 5px;
+      overflow: hidden;
+      transition: opacity 0.3s ease; /* Smooth transition for visibility */
+      opacity: 0; /* Initially invisible */
+      visibility: hidden; /* Prevent interaction */
+    }
+    
+    .dropdown-content a {
+      color: black;
+      text-decoration: none;
+      padding: 10px 15px;
+      display: block;
+      font-size: 14px;
+      background-color: transparent; /* Default background color */
+    }
+    
+    /* User dropdown styling */
+  .dropdown-content a:hover {
+    background-color: #fca5ea;
+    color: white; /* Good contrast for text */
+    text-decoration: none; /* Keep underline removed */
+    padding: 10px 15px; /* Padding to fully fulfill the box */
+    display: block;
+    width: 100%; /* Make sure it fills the entire box width */
+  }
+
+    /* Show dropdown on hover */
+    .user-dropdown:hover .dropdown-content {
+      display: block; /* Make dropdown visible */
+      opacity: 1; /* Fully visible */
+      visibility: visible; /* Allow interaction */
+    }
+    </style>
+
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="homepage.html" class="logo">
+        <img src="orcakes.png" alt="Company Logo" class="logo-img">
+      </a>
+      <ul>
+        <li><a href="homepage.html">Home</a></li>
+        <li><a href="categories.html">Product Catalog</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+      <input type="text" placeholder="Search in site">
+      <div class="user-dropdown">
+        <img src="user.png" alt="User Icon" class="user-icon" width="31" height="30">
+        <div class="dropdown-content">
+          <a href="login.html">Log Out</a><br>
+        </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h2>FROM OUR OVEN TO YOUR HEART</h2>
+      </div>
+    </section>
+
+    <!-- Featured Products Section -->
+    <section class="featured-products">
+      <h2>Featured Products</h2>
+      <div class="product-grid">
+        <div class="product-card">
+          <img src="cakes.jpg" alt="Cakes">
+          <h3>Cakes</h3>
+          <p>Our best-selling cakes, perfect for every occasion.</p>
+          <a href="cakes-details.html" class="details-btn">View Details</a>
+        </div>
+        <div class="product-card">
+          <img src="brownies.jpg" alt="Brownies">
+          <h3>Brownies</h3>
+          <p>Rich and gooey brownies made with the finest ingredients.</p>
+          <a href="brownies-details.html" class="details-btn">View Details</a>
+        </div>
+        <div class="product-card">
+          <img src="pavlova.jpg" alt="Pavlova">
+          <h3>Pavlova</h3>
+          <p>Light and fluffy pavlova topped with fresh fruits.</p>
+          <a href="pavlova-details.html" class="details-btn">View Details</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Customer Reviews Section -->
+    <section class="reviews">
+      <h2>What Our Customers Say</h2>
+      <div class="review-slider">
+        <div class="review">
+          <p>"Absolutely loved the chocolate tartlets! Perfect balance of flavor."</p>
+          <span>- Sarah J.</span>
+        </div>
+        <div class="review">
+          <p>"The burnt cheesecake was a hit at my party. Highly recommend!"</p>
+          <span>- John D.</span>
+        </div>
+        <div class="review">
+          <p>"Fresh, delicious, and beautifully decorated cakes. Will order again!"</p>
+          <span>- Emily R.</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <p>Follow us on Instagram @OrcakesPatisserie | &copy; 2022 Orcakes Pattisserie | info@orcakespatisserie.com | +601121065718</p>
+    </div>
+  </footer>
+
+  <script>
+    // Select the dropdown elements
+    const userDropdown = document.querySelector('.user-dropdown');
+    const dropdownContent = document.querySelector('.dropdown-content');
+  
+    // Show the dropdown when mouse enters
+    userDropdown.addEventListener('mouseenter', () => {
+      dropdownContent.style.display = 'block';
+    });
+  
+    // Hide the dropdown when mouse leaves
+    userDropdown.addEventListener('mouseleave', () => {
+      dropdownContent.style.display = 'none';
+    });
+  
+    // Optional: Add a smooth transition effect using CSS
+    dropdownContent.style.transition = 'opacity 0.3s ease';
+  </script>
+  
+</body>
+</html>

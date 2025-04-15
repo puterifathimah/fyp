@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - Orcakes Patisserie</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Navigation bar styling */
+  nav {
+    display: flex;
+    justify-content: center; /* Space between logo and navigation items */
+    align-items: center; /* Vertically align items */
+    padding: 0 20px; /* Add padding for spacing */
+    position: relative; /* Ensure relative positioning for absolute child elements */
+  }
+  
+  /* Center navigation links */
+  nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0 auto; /* Center the links */
+    padding: 0;
+    justify-content: center;
+  }
+  
+  nav ul li {
+    margin: 0 15px;
+  }
+  
+  nav ul li a {
+    color: #333;
+    text-decoration: none;
+    font-size: 1.2em;
+  }
+  
+  nav ul li a:hover {
+    color: #c71585;
+  }
+  
+  /* Align search input and user icon to the right */
+  nav input[type="text"] {
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f5e3fc;
+    color: #333;
+    margin-right: 20px; /* Space between search and user icon */
+    width: 200px; /* Set a fixed width for the search input */
+  }
+  
+  /* Cart button styling */
+  .cart-button {
+    margin-right: 15px;
+    display: flex;
+    align-items: center; /* Vertically align the icon */
+  }
+  
+  .cart-icon {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+  }
+  
+  .cart-button:hover .cart-icon {
+    transform: scale(1.1); /* Slight zoom effect on hover */
+    transition: transform 0.3s ease;
+  }
+  
+    /* User dropdown styling */
+      .user-dropdown {
+        position: relative;
+        display: inline-block;
+      }
+      
+      .user-icon {
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        border-radius: 50%; /* Circular icon */
+        display: block;
+      }
+      
+      /* Dropdown content */
+      .dropdown-content {
+        display: none; /* Hidden initially */
+        position: absolute;
+        top: 100%; /* Position below the icon */
+        right: 0; /* Align to the right edge */
+        background-color: white;
+        min-width: 150px; /* Dropdown width */
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Adds shadow */
+        z-index: 1000; /* Ensure it's on top */
+        border-radius: 5px;
+        overflow: hidden;
+        transition: opacity 0.3s ease; /* Smooth transition for visibility */
+        opacity: 0; /* Initially invisible */
+        visibility: hidden; /* Prevent interaction */
+      }
+      
+      .dropdown-content a {
+        color: black;
+        text-decoration: none;
+        padding: 10px 15px;
+        display: block;
+        font-size: 14px;
+        background-color: transparent; /* Default background color */
+      }
+      
+      /* User dropdown styling */
+    .dropdown-content a:hover {
+      background-color: #fca5ea;
+      color: white; /* Good contrast for text */
+      text-decoration: none; /* Keep underline removed */
+      padding: 10px 15px; /* Padding to fully fulfill the box */
+      display: block;
+      width: 100%; /* Make sure it fills the entire box width */
+    }
+  
+      /* Show dropdown on hover */
+      .user-dropdown:hover .dropdown-content {
+        display: block; /* Make dropdown visible */
+        opacity: 1; /* Fully visible */
+        visibility: visible; /* Allow interaction */
+      }
+      </style>
+  
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="homepage.html" class="logo">
+          <img src="orcakes.png" alt="Company Logo" class="logo-img">
+        </a>
+        <ul>
+          <li><a href="homepage.html">Home</a></li>
+          <li><a href="categories.html">Product Catalog</a></li>
+          <li><a href="class-register.html">Class Registration</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+        
+        <input type="text" placeholder="Search in site">
+        <!-- Add Cart Button -->
+        <a href="cart.html" class="cart-button">
+          <img src="cart.png" alt="Cart" class="cart-icon" width="30" height="30">
+        </a>
+        <div class="user-dropdown">
+          <img src="user.png" alt="User Icon" class="user-icon" width="31" height="30">
+          <div class="dropdown-content">
+            <a href="login.html">Log Out</a>
+          </div>
+      </nav>
+    </header>
+
+  <main>
+    <section class="contact-section">
+      <h1>Contact Us</h1>
+      <p>We'd love to hear from you! Reach out to us through any of the following ways:</p>
+
+      <div class="contact-info">
+        <div class="contact-item">
+          <h2>Address</h2>
+          <p>3A-2, Jalan PPP 1, Pusat Perdagangan Paroi, 70400 Seremban, Negeri Sembilan</p>
+        </div>
+        <div class="contact-item">
+          <h2>Phone</h2>
+          <p>+601121065718</p>
+        </div>
+        <div class="contact-item">
+          <h2>Email</h2>
+          <p>info@orcakes.com</p>
+        </div>
+        <div class="contact-item">
+          <h2>Business Hours</h2>
+          <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+          <p>Saturday: 10:00 AM - 4:00 PM</p>
+        </div>
+      </div>
+
+      <form action="#" method="POST" class="contact-form">
+        <h2>Send Us a Message</h2>
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <p>Follow us on Instagram @OrcakesPatisserie | &copy; 2022 Orcakes Pattisserie | info@orcakespatisserie.com | +601121065718</p>
+    </div>
+  </footer>
+
+  <script>
+    // Select the dropdown elements
+    const userDropdown = document.querySelector('.user-dropdown');
+    const dropdownContent = document.querySelector('.dropdown-content');
+  
+    // Show the dropdown when mouse enters
+    userDropdown.addEventListener('mouseenter', () => {
+      dropdownContent.style.display = 'block';
+    });
+  
+    // Hide the dropdown when mouse leaves
+    userDropdown.addEventListener('mouseleave', () => {
+      dropdownContent.style.display = 'none';
+    });
+  
+    // Optional: Add a smooth transition effect using CSS
+    dropdownContent.style.transition = 'opacity 0.3s ease';
+  </script>
+</body>
+</html>

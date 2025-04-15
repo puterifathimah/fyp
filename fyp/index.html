@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home - Orcakes Patisserie</title>
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 0;
+  position: relative; /* Needed for overlay positioning */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url('banner.jpg'); /* Replace with your actual image path */
+  background-size: cover; /* Makes the image cover the entire section */
+  background-repeat: no-repeat; /* Prevents tiling */
+  background-position: center; /* Centers the image */
+  height: 60vh; /* Sets the section height to the full viewport height */
+  width: 100%; /* Ensures full width of the page */
+  display: flex; /* Centers content */
+  justify-content: center;
+  align-items: center;
+}
+
+.hero h2 {
+  font-size: 3.5em;
+  margin: 20px 0;
+  font-family: "Georgia", serif;
+  color: #ffffff; /* Black text */
+}
+
+.hero p {
+  font-size: 1.2em; /* Adjust font size for the paragraph */
+  color: #ffffff; /* white for better contrast */
+}
+
+.hero p a {
+  color: #f591c3 !important; /* Pink color for the "See More" link, enforce with !important */
+  font-weight: bold;
+  text-decoration: none; /* Remove underline */
+  font-size: 1.8em; /* Larger font size for emphasis */
+}
+
+.hero p a:hover {
+  color: #ffffff !important; /* Change to white on hover */
+  text-decoration: underline; /* Add underline on hover */
+}
+</style>
+
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="index.html" class="logo">
+        <img src="orcakes.png" alt="Company Logo" class="logo-img">
+      </a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h2>WELCOME TO ORCAKES PATISSERIE</h2>
+        <p>
+          To know much more about our cakes and patries,
+          <a href="login.html" style="color: #c71585; text-decoration: none; font-weight: bold;">SEE MORE</a>.
+        </p>
+      </div>
+    </section>
+
+    <!-- Customer Reviews Section -->
+    <section class="reviews">
+      <h2>What Our Customers Say</h2>
+      <div class="review-slider">
+        <div class="review">
+          <p>"Absolutely loved the chocolate tartlets! Perfect balance of flavor."</p>
+          <span>- Sarah J.</span>
+        </div>
+        <div class="review">
+          <p>"The burnt cheesecake was a hit at my party. Highly recommend!"</p>
+          <span>- John D.</span>
+        </div>
+        <div class="review">
+          <p>"Fresh, delicious, and beautifully decorated cakes. Will order again!"</p>
+          <span>- Emily R.</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <p>Follow us on Instagram @OrcakesPatisserie | &copy; 2022 Orcakes Pattisserie | info@orcakespatisserie.com | +601121065718</p>
+    </div>
+  </footer>
+
+  <script>
+    // Select the dropdown elements
+    const userDropdown = document.querySelector('.user-dropdown');
+    const dropdownContent = document.querySelector('.dropdown-content');
+  
+    // Show the dropdown when mouse enters
+    userDropdown.addEventListener('mouseenter', () => {
+      dropdownContent.style.display = 'block';
+    });
+  
+    // Hide the dropdown when mouse leaves
+    userDropdown.addEventListener('mouseleave', () => {
+      dropdownContent.style.display = 'none';
+    });
+  
+    // Optional: Add a smooth transition effect using CSS
+    dropdownContent.style.transition = 'opacity 0.3s ease';
+  </script>
+  
+</body>
+</html>
